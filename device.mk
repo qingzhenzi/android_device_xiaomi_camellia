@@ -14,18 +14,17 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # Boot control HAL
+
 PRODUCT_PACKAGES += \
+    bootctrl.mt6833 \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service
 
-PRODUCT_PACKAGES += \
-    bootctrl.mt6833
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.mt6833 \
-    libgptutils \
-    libz \
-    libcutils
+#PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#    bootctrl.mt6833 \
+#    libgptutils \
+#    libz \
+#    libcutils
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -33,3 +32,11 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
+PRODUCT_SHIPPING_API_LEVEL := 30
